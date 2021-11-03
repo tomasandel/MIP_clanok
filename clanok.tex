@@ -2,6 +2,7 @@
 
 \documentclass[10pt,twoside,slovak,a4paper]{article}
 
+
 \usepackage[slovak]{babel}
 %\usepackage[T1]{fontenc}
 \usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
@@ -15,7 +16,7 @@
 
 \pagestyle{headings}
 
-\title{Spiral model a jeho použitie pri modelovaní softvéru\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2020/21, vedenie: Vladislav Mlynarovič}} 
+\title{Spiral model a jeho použitie pri modelovaní softvéru\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2021/22, vedenie: Ing. Vladislav Mlynarovič, PhD.}} 
 
 \author{Tomáš Andel\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
@@ -23,7 +24,7 @@
 	{\small \texttt{xandelt1@stuba.sk}}
 	}
 
-\date{\small 30. september 2021} % upravte
+\date{\small 30. september 2021}
 
 
 
@@ -32,12 +33,16 @@
 \maketitle
 
 \begin{abstract}
-Spiral model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu riskov. Článok analyzuje postup vývoja pomocou Spiral modelu, porovná jeho výhody a nevýhody s inými vybranými modelmi a predstaví ako vznikal a ako sa vyvíjal. Preskúma aké spôsoby modelovania sa využívajú pri vývoji touto metódou. Pozrie sa na rôzne možnosti jeho využitia a kde konkrétne sa používa. Predstaví novinky v tejto oblasti ako napríklad aké sú iné modely, ktoré sú založené na Spiral modeli alebo aké kombinácie Spiral modelu a iných modelov sa dnes využívajú na optimalizáciu vývoja softvéru.
+Spiral model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu riskov. Článok popíše rôzne metódy na vývoj softvéru a predvedie čím sa Spiral model vyznačuje. Analyzuje postup vývoja pomocou Spiral modelu, porovná jeho výhody a nevýhody s inými vybranými modelmi a predstaví ako vznikal a ako sa vyvíjal. Preskúma aké spôsoby modelovania sa využívajú pri vývoji touto metódou. Pozrie sa na rôzne možnosti jeho využitia a kde konkrétne sa používa. Predstaví novinky v tejto oblasti ako napríklad aké sú iné modely, ktoré sú založené na Spiral modeli alebo aké kombinácie Spiral modelu a iných modelov sa dnes využívajú na optimalizáciu vývoja softvéru.
 \end{abstract}
 
-
-
 \section{Úvod}
+
+Vývoj softvéru je zložitý proces. Tvorba nápadu, určenie požiadaviek, dizajn, implementácia, testovanie, údržba - tieto všetky a ďalšie procesy nastávajú pri vývoji softvéru, bez jasného plánu môže byť vývoj zdĺhavý a drahý. Už od možnosti vývoja prvého softvéru ľudia hľadajú modely, podľa ktorých budú pracovať, a ktoré im umožnia efektívne vyvíjať komplexné softvéry.
+
+V časti [] je základné predstavenie vývoja softvéru a prvotných metód (modelov). Popísanie Spiral modelu sa nachádza v časti []. 
+
+...
 
 Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
 
@@ -48,65 +53,52 @@ Záverečné poznámky prináša časť~\ref{zaver}.
 
 
 
-\section{Nejaká časť} \label{nejaka}
+\section{Vývoj softvéru} \label{vyvojSoftveru}
 
-Z obr.~\ref{f:rozhod} je všetko jasné. 
+Softvéroví inžinieri sa vždy snažia vyprodukovať kvalitný produkt, ktorý zodpovedá požiadavkám klienta, neprekročí pridelený rozpočet a je vyprodukovaný načas. Bohužial, často tieto ciele nie sú dosiahnuté. Ale dobrý manažment projektu vo vhodnom prostredí, ktoré sa drží zaužívaných metód a modelov môže zaručiť konzistené dosahovanie týchto cielov. \cite{Methodologies}
 
-\begin{figure*}[tbh]
-\centering
-%\includegraphics[scale=1.0]{diagram.pdf}
-Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
+Životný cyklus vývoja softvéru je proces tvorby softvéru, ktorého cielom je finálny produkt čo najvyššej kvality a čo najnižšej ceny \cite{SDLCdef}. Väčšinou obnáša tieto fázy:\cite{SDCLphases}
+\begin{enumerate}
+\item \textbf{Iniciácia/Počiatočné plánovanie} - Diskusia o realizovateľnosti projektu, počiatočná estimácia nákladov a časovej náročnosti.
+\item \textbf{Analýza požiadaviek a špecifikácia} - Identifikácia problémov, ktoré má vyvíjaný softvér riešiť a ich špecifikácia. Riešenie jeho operačných schopností, výkonostných charakteristík a infraštruktúry potrebnej na jeho údržbu.
+\item \textbf{Funkčná špecifikácia alebo prototypovanie} - Identifikácia objektov, ich vlastnosti a vzťahy. Identifikácia obmedzení, ktoré obmedzujú správanie systému aťd. 
+\item \textbf{Rozdelenie systémov (Build vs. Buy vs. Reuse)} - Rozdelenie systému na menšie časti a zistiť, ktoré je vhodné vyrobiť, ktoré stačí odkúpiť a nakonfigurovať k požiadavkám systému, a ktoré je možné znova použiť z predošlých projektov.
+\item \textbf{Architektúra} - Definuje prepojenia a vytvára rozhrania medzi jednotlivými podsystémami, komponentami a modulmi aby bol možný ich jednotlivý detailný dizajn.
+\item \textbf{Detailný dizajn komponentov} - Definuje funkciu jednotlivých komponentov, ich interné správanie, ako transformujú vstupy na požadované výstupy.
+\item \textbf{Implementácia komponentov} - Kodifikuje špecifikácie navrhnuté počas architektúry a detailného dizajnu komponentov do funkčného zdrojového kódu.
+\item \textbf{Testovanie a kontrola integrity} - Kontrola systému a podsystémov na základe ich požiadaviek. Kontroluje celkovú integritu systému.
+\item \textbf{Tvorba dokumentácie} - Vytváranie systematických dokumentov a užívatelských príručiek.
+\item \textbf{Spustenie softvéru pre klienta/užívateľa} - Poskytnutie softvéru užívatelovi a prípadne inštrukcie na inštaláciu a konfiguráciu.
+\item \textbf{Školenie a používanie softvéru} - Školenie užívatelov systému ako správne a efektívne softvér využívať.
+\item \textbf{Údržba softvéru} - Udržovanie operatívnosti softvéru opravovaním objavených chýb, poskytovaním funkčných alebo výkonnostných vylepšení, údržbou podpornej infraštruktúry.
+\end{enumerate}
 
 
+\subsection{Metódy vývoja softvéru} \label{metody:vyvojSoftveru}
+Metódy alebo modely na vývoj softvéru popisujú spôsob navigácie medzi vyššie uvedenými procesmi vývoja.\cite{ModelDef}
 
-\section{Iná časť} \label{ina}
+Existuje veľké množstvo modelov a každý z nich je vhodný v inej situácií. Pozrime sa na niekoľko tradičných modelov \cite{Methodologies}:
+\begin{itemize}
+\item \textbf{Waterfall Model} - Jeho grafická reprezentácia vyzerá ako kaskáda vodopádov. Je to jeden z najstarších modelov a je základom mnohých iných modelov. Pri používaní tohto modelu je každý proces najprv dokončený a až potom sa prechádza na ďalší. Jeho nevýhodou je nízka úroveň flexibility, všetky požiadavky je potrebné vedieť už na začiatku. Nie je vhodný na veľké projekty. Analýza rizík je často zložitá.
+\item \textbf{Sashimi Model} - Waterfall model, pri ktorom je dovolená paralelná práca na viacerých fázach naraz. Je časovo výhodnejší.
+\item \textbf{V-Shaped Model} - Je považovaný za rozšírenie Waterfall modelu. Namiesto lineárneho pohybu nadol sa vytvára tvar V s vrcholom, v ktorom je implementačný proces. Model vytvára vzťahy medzi vývojovými procesmi pred implementáciou a ich príslušnými fázami testovania. Výhodou tohto modelu jednoduché použitie rovnako ako pri Waterfall modeli a narozdiel od Waterfall modelu je tu vyššia šanca úspechu kvôli plánovaniu testovania už na začiatku vývoja. Nevýhodou je nízka úroveň flexibility a nemožnosť tvorby skorých prototypov pretože všetká produkcia kódu je až vo fázi implementácie.
+\end{itemize}
+
+Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Spiral model tieto problémy rieši.
+
+\section{Spiral model} \label{spiralModel}
 
 Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
 
 Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
 
 
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
-
-\begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
-\end{itemize}
-
-Ten istý zoznam, len číslovaný:
-
-\begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
-\end{enumerate}
-
-
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
-
 \paragraph{Veľmi dôležitá poznámka.}
 Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
 
 
 
-\section{Dôležitá časť} \label{dolezita}
 
-
-
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
 
 
 
@@ -120,5 +112,5 @@ Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom
 
 % týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
 \bibliography{literatura}
-\bibliographystyle{alpha} % prípadne alpha, abbrv alebo hociktorý iný
+\bibliographystyle{abbrv} % prípadne alpha, abbrv alebo hociktorý iný
 \end{document}
