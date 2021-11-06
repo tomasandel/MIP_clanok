@@ -11,7 +11,7 @@
 \usepackage{url} % príkaz \url na formátovanie URL
 \usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
 
-\usepackage{cite}
+\usepackage{}
 %\usepackage{times}
 
 \pagestyle{headings}
@@ -40,18 +40,9 @@ Spiral model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyzn
 
 Vývoj softvéru je zložitý proces. Tvorba nápadu, určenie požiadaviek, dizajn, implementácia, testovanie, údržba - tieto všetky a ďalšie procesy nastávajú pri vývoji softvéru, bez jasného plánu môže byť vývoj zdĺhavý a drahý. Už od možnosti vývoja prvého softvéru ľudia hľadajú modely, podľa ktorých budú pracovať, a ktoré im umožnia efektívne vyvíjať komplexné softvéry.
 
-V časti [] je základné predstavenie vývoja softvéru a prvotných metód (modelov). Popísanie Spiral modelu sa nachádza v časti []. 
+Existuje množstvo vývojových modelov, niektoré sú vhodnejšie na menšie projekty, pričom sú nepoužiteľné vo veľkých, kde by vývoj postupoval neefektívnym spôsobom. Iné sú zasa vhodnejšie na veľké projekty, ale pri malých projektoch by bolo ich použitie zbytočne komplikované. Tento článok ukáže vývoj skôr veľkých projektov a prečo je na to výbornou voľbou práve Spiral model.
 
-...
-
-Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
-
-Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
-Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
-Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
-Záverečné poznámky prináša časť~\ref{zaver}.
-
-
+V časti \ref{vyvojSoftveru} sa pozrieme na životný cyklus vývoja softvéru a aké fázy obnáša. V časti \ref{metody:vyvojSoftveru} bude predstavených niekoľko tradičných vývojových modelov a budú ukázané ich nevýhody a ako ich Spiral model rieši. V ďalšej časti \ref{spiralModel} prejdeme na samotný Spiral model. Ukážeme si ako funguje, ako prebieha riešenie objavených rizík v časti \ref{risks:spiralModel}, ako vznikal v časti \ref{history:spiralModel} a kde sa využíva v časti \ref{usage:spiralModel}. Na záver \ref{vyvojSoftveru} budú zhrnuté získané poznatky.
 
 \section{Vývoj softvéru} \label{vyvojSoftveru}
 
@@ -84,17 +75,37 @@ Existuje veľké množstvo modelov a každý z nich je vhodný v inej situácií
 \item \textbf{V-Shaped Model} - Je považovaný za rozšírenie Waterfall modelu. Namiesto lineárneho pohybu nadol sa vytvára tvar V s vrcholom, v ktorom je implementačný proces. Model vytvára vzťahy medzi vývojovými procesmi pred implementáciou a ich príslušnými fázami testovania. Výhodou tohto modelu jednoduché použitie rovnako ako pri Waterfall modeli a narozdiel od Waterfall modelu je tu vyššia šanca úspechu kvôli plánovaniu testovania už na začiatku vývoja. Nevýhodou je nízka úroveň flexibility a nemožnosť tvorby skorých prototypov pretože všetká produkcia kódu je až vo fázi implementácie.
 \end{itemize}
 
-Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Spiral model tieto problémy rieši.
+Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Pri vývoji veľkých projektov častov vznikajú rôzne riziká, ktoré sa pri tých menších objavujú menej. Preto veľké firmy hľadajú iné modely, pomocou ktorých tieto riziká vedia odhaliť a uskutočniť určité kroky na ich spracovanie.
+
+V ďalšej časti sa pozrieme na Spiral model a ako dokáže tieto problémy riešiť.
 
 \section{Spiral model} \label{spiralModel}
+Spiral model, pôvodne navrhnutý Barrym W. Boehmom, je evolučný softvérový procesný model, ktorý spája iteračnú vlastnosť prototypovania s riadenými a systematickými aspektmi lineárneho sekvenčného modelu. \cite{SpiralModelDef}
 
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
+Jeho diagram vyzerá ako špirála s mnohými slučkami (viď. obrázok). Každá slučka špirály sa nazýva fáza vývojového procesu softvéru. Presný počet fáz závisí od zložitosti projektu. Projektový manažér analyzuje riziká a iné faktory, podľa ktorých dynamicky určuje počet týchto fáz.
 
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
+Čím je väčší počet fáz, tým sú väčšie náklady projektu - polomer špirály predstavuje celkové náklady projektu. Uhol medzi pozorovaným miestom a začiatkom fázy predstavuje dosiahnutý postup v danej fáze. \cite{SpiralModelDef1}
 
+Každá fáza je rozdelená do štyroch kvadrantov, ako je znázornené na obrázku. Kvadranty sú \cite{SpiralModelDef1}:
+\begin{enumerate}
+\item \textbf{Určovanie cieľov, alternatív, obmedzení } - V tomto kvadrante prebieha zbieranie požiadaviek od klientov, analýza a identifikácia cieľov a potom diskusia ohľadom alternatívnych riešení, ktoré by mohli byť použité v ďalších častiach súčasnej fázy.
+\item \textbf{Zhodnotenie riešení, identifikácia a riešenie rizík } - V druhom kvadrante sú všetky možné riešenia zhodnotené a vyberie sa najlepšie riešenie. Ďalej prebieha analýza rizík spojených s vybraným riešením, tie sú následne riešené pomocou najvhodnejšej stratégie. Na konci tohto kvadrantu je zhotovený prototyp, ktorý je v súlade s vybranou najlepšou stratégiou.
+\item \textbf{Vývoj a testovanie produktu ďalšej verzie} - V treťom kvadrante prebieha všetká implementácia a testovanie. Určené špecifikácie sú vytvárané a testované. Na konci tohto kvadrantu je pripravená ďalšia verzia produktu.
+\item \textbf{Plánovanie ďalšej fázy} - Klient zhodnotí vytvorený produkt a prebieha plánovanie na ďalšiu fázu.
+\end{enumerate}
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+Na doplnenie.
+\subsection{Riešenie rizík pomocou Spiral modelu} \label{risks:spiralModel}
+
+Na doplnenie.
+
+\subsection{Vznik Spiral modelu} \label{history:spiralModel}
+
+Na doplnenie.
+
+\subsection{Využitie Spiral modelu} \label{usage:spiralModel}
+
+Na doplnenie.
 
 
 
@@ -104,7 +115,7 @@ Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom
 
 
 \section{Záver} \label{zaver} % prípadne iný variant názvu
-
+Na doplnenie.
 
 
 %\acknowledgement{Ak niekomu chcete poďakovať\ldots}
