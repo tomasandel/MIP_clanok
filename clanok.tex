@@ -15,7 +15,7 @@
 
 \pagestyle{headings}
 
-\title{Spiral model a jeho použitie pri modelovaní softvéru\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2021/22, vedenie: Ing. Vladislav Mlynarovič, PhD.}} 
+\title{Špirálový model a jeho použitie pri modelovaní softvéru\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2021/22, vedenie: Ing. Vladislav Mlynarovič, PhD.}} 
 
 \author{Tomáš Andel\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
@@ -32,22 +32,36 @@
 \maketitle
 
 \begin{abstract}
-Spiral model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu riskov. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich Spiral model rieši. Analyzuje postup vývoja pomocou Spiral modelu, porovná jeho výhody a nevýhody a predstaví ako vznikal a ako sa vyvíjal. Preskúma aké spôsoby modelovania sa využívajú pri vývoji touto metódou. Pozrie sa na rôzne možnosti jeho využitia a kde konkrétne sa používa. Predstaví novinky v tejto oblasti ako napríklad aké sú iné modely, ktoré sú založené na Spiral modeli alebo aké kombinácie Spiral modelu a iných modelov sa dnes využívajú na optimalizáciu vývoja softvéru.
+Špirálový model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu riskov. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich špirálový model rieši. Analyzuje postup vývoja pomocou špirálový modelu, porovná jeho výhody a nevýhody a predstaví ako vznikal a ako sa vyvíjal. Preskúma aké spôsoby modelovania sa využívajú pri vývoji touto metódou. Pozrie sa na rôzne možnosti jeho využitia a kde konkrétne sa používa. Predstaví novinky v tejto oblasti ako napríklad aké sú iné modely, ktoré sú založené na špirálovom modeli alebo aké kombinácie špirálového modelu a iných modelov sa dnes využívajú na optimalizáciu vývoja softvéru.
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+doplnit klucove slova
 \end{abstract}
 
 \section{Úvod}
 
 Vývoj softvéru je zložitý proces. Tvorba nápadu, určenie požiadaviek, dizajn, implementácia, testovanie, údržba - tieto všetky a ďalšie procesy nastávajú pri vývoji softvéru, bez jasného plánu môže byť vývoj zdĺhavý a drahý. Už od možnosti vývoja prvého softvéru ľudia hľadajú modely, podľa ktorých budú pracovať, a ktoré im umožnia efektívne vyvíjať komplexné softvéry.
 
-Existuje množstvo vývojových modelov, niektoré sú vhodnejšie na menšie projekty, pričom sú nepoužiteľné vo veľkých, kde by vývoj postupoval neefektívnym spôsobom. Iné sú zasa vhodnejšie na veľké projekty, ale pri malých projektoch by bolo ich použitie zbytočne komplikované. Tento článok ukáže vývoj skôr veľkých projektov a prečo je na to výbornou voľbou práve Spiral model.
+Existuje množstvo vývojových modelov, niektoré sú vhodnejšie na menšie projekty, pričom sú nepoužiteľné vo veľkých, kde by vývoj postupoval neefektívnym spôsobom. Iné sú zasa vhodnejšie na veľké projekty, ale pri malých projektoch by bolo ich použitie zbytočne komplikované. Tento článok ukáže vývoj skôr veľkých projektov a prečo je na to výbornou voľbou práve špirálový model.
 
-V časti \ref{vyvojSoftveru} sa pozrieme na životný cyklus vývoja softvéru a aké fázy obnáša. V časti \ref{metody:vyvojSoftveru} bude predstavených niekoľko tradičných vývojových modelov a budú ukázané ich nevýhody a ako ich Spiral model rieši. V ďalšej časti \ref{spiralModel} prejdeme na samotný Spiral model. Ukážeme si ako funguje, ako prebieha riešenie objavených rizík v časti \ref{risks:spiralModel}, ako vznikal v časti \ref{history:spiralModel} a kde sa využíva v časti \ref{usage:spiralModel}. V časti \ref{winwin:spiralModel} je predstavený Win-Win Spiral model a v časti \ref{problems:spiralModel} sú zhodnotené problémy Spiral modelu. Na záver \ref{zaver} budú zhrnuté získané poznatky.
+V časti \ref{vyvojSoftveru} sa pozrieme na životný cyklus vývoja softvéru a aké fázy obnáša. V časti \ref{metody:vyvojSoftveru} bude predstavených niekoľko tradičných vývojových modelov a budú ukázané ich nevýhody a ako ich špirálový model rieši. V ďalšej časti (\ref{spiralModel}) prejdeme na samotný špirálový model. Ukážeme si ako funguje, ako prebieha riešenie objavených rizík v časti \ref{risks:spiralModel}, ako vznikal v časti \ref{history:spiralModel} a kde sa využíva v časti \ref{usage:spiralModel}. V časti \ref{winwin:spiralModel} je predstavený Win-Win špirálový model a v časti \ref{problems:spiralModel} sú zhodnotené problémy špirálového modelu. Na záver \ref{zaver} budú zhrnuté získané poznatky.
 
 \section{Vývoj softvéru} \label{vyvojSoftveru}
 
 Softvéroví inžinieri sa vždy snažia vyprodukovať kvalitný produkt, ktorý zodpovedá požiadavkám klienta, neprekročí pridelený rozpočet a je vyprodukovaný načas. Bohužial, často tieto ciele nie sú dosiahnuté. Ale dobrý manažment projektu vo vhodnom prostredí, ktoré sa drží zaužívaných metód a modelov môže zaručiť konzistené dosahovanie týchto cielov. \cite{Methodologies}
 
 Životný cyklus vývoja softvéru je proces tvorby softvéru, ktorého cielom je finálny produkt čo najvyššej kvality a čo najnižšej ceny \cite{SDLCdef}. Väčšinou obnáša tieto fázy:\cite{SDCLphases}
+\begin{sloppypar}
 \begin{enumerate}
 \item \textbf{Iniciácia/Počiatočné plánovanie} - Diskusia o realizovateľnosti projektu, počiatočná estimácia nákladov a časovej náročnosti.
 \item \textbf{Analýza požiadaviek a špecifikácia} - Identifikácia problémov, ktoré má vyvíjaný softvér riešiť a ich špecifikácia. Riešenie jeho operačných schopností, výkonostných charakteristík a infraštruktúry potrebnej na jeho údržbu.
@@ -62,6 +76,7 @@ Softvéroví inžinieri sa vždy snažia vyprodukovať kvalitný produkt, ktorý
 \item \textbf{Školenie a používanie softvéru} - Školenie užívatelov systému ako správne a efektívne softvér využívať.
 \item \textbf{Údržba softvéru} - Udržovanie operatívnosti softvéru opravovaním objavených chýb, poskytovaním funkčných alebo výkonnostných vylepšení, údržbou podpornej infraštruktúry.
 \end{enumerate}
+\end{sloppypar}
 
 
 
@@ -78,13 +93,20 @@ Existuje veľké množstvo modelov a každý z nich je vhodný v inej situácií
 
 Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Pri vývoji veľkých projektov častov vznikajú rôzne riziká, ktoré sa pri tých menších objavujú menej. Preto veľké firmy hľadajú iné modely, pomocou ktorých tieto riziká vedia odhaliť a uskutočniť určité kroky na ich spracovanie.
 
-V ďalšej časti sa pozrieme na Spiral model a ako dokáže tieto problémy riešiť.
+V ďalšej časti sa pozrieme na špirálový model a ako dokáže tieto problémy riešiť.
 
+\pagebreak
 
-\section{Spiral model} \label{spiralModel}
-Spiral model, pôvodne navrhnutý Barrym W. Boehmom, je evolučný softvérový procesný model, ktorý spája iteračnú vlastnosť prototypovania s riadenými a systematickými aspektmi lineárneho sekvenčného modelu. \cite{SpiralModelDef}
+\section{Špirálový model} \label{spiralModel}
+Špirálový model, pôvodne navrhnutý Barrym W. Boehmom, je evolučný softvérový procesný model, ktorý spája iteračnú vlastnosť prototypovania s riadenými a systematickými aspektmi lineárneho sekvenčného modelu. \cite{SpiralModelDef}
 
 Jeho diagram vyzerá ako špirála s mnohými slučkami (viď. obrázok \ref{spiralDiagram}). Každá slučka špirály sa nazýva fáza vývojového procesu softvéru. Presný počet fáz závisí od zložitosti projektu. Projektový manažér analyzuje riziká a iné faktory, podľa ktorých dynamicky určuje počet týchto fáz.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{spiralModel.png}
+\caption{Diagram špirálového modelu \cite{Boehm}} 
+\label{spiralDiagram}
+\end{figure} 
 
 Čím je väčší počet fáz, tým sú väčšie náklady projektu - polomer špirály predstavuje celkové náklady projektu. Uhol medzi pozorovaným miestom a začiatkom fázy predstavuje dosiahnutý postup v danej fáze. \cite{SpiralModelDef1}
 
@@ -97,30 +119,24 @@ Každá fáza je rozdelená do štyroch kvadrantov, ako je znázornené na obrá
 \end{enumerate}
 Na doplnenie.
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{spiralModel.png}
-\caption{Spiral model diagram \cite{Boehm}} 
-\label{spiralDiagram}
-\end{figure} 
-
-\subsection{Riešenie rizík pomocou Spiral modelu} \label{risks:spiralModel}
+\subsection{Riešenie rizík pomocou špirálového modelu} \label{risks:spiralModel}
 
 Na doplnenie.
 
-\subsection{Vznik Spiral modelu} \label{history:spiralModel}
-Pred prvou definíciou Barrym Boehmom v roku 1986 sa Spiral model vyvíjal niekoľko rokov. Prvé implementácie vznikali na základe rôznych úprav Waterfall modelu aplikovaného na veľké vládne projekty. \cite{Boehm}
+\subsection{Vznik špirálového modelu} \label{history:spiralModel}
+Pred prvou definíciou Barrym Boehmom v roku 1986 sa špirálový model vyvíjal niekoľko rokov. Prvé implementácie vznikali na základe rôznych úprav Waterfall modelu aplikovaného na veľké vládne projekty. \cite{Boehm}
 
 Na doplnenie.
 
-\subsection{Využitie Spiral modelu} \label{usage:spiralModel}
+\subsection{Využitie špirálového modelu} \label{usage:spiralModel}
 
 Na doplnenie.
 
-\subsection{Win-Win Spiral model} \label{winwin:spiralModel}
+\subsection{Win-Win špirálového modelu} \label{winwin:spiralModel}
 
 Na doplnenie.
 
-\subsection{Problémy Spiral modelu a ich riešenia} \label{problems:spiralModel}
+\subsection{Problémy špirálového modelu a ich riešenia} \label{problems:spiralModel}
 
 Na doplnenie.
 
