@@ -32,20 +32,9 @@
 \maketitle
 
 \begin{abstract}
-Špirálový model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu riskov. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich špirálový model rieši. Analyzuje postup vývoja pomocou špirálový modelu, porovná jeho výhody a nevýhody a predstaví ako vznikal a ako sa vyvíjal. Preskúma aké spôsoby modelovania sa využívajú pri vývoji touto metódou. Priblíži rôzne možnosti jeho využitia a kde konkrétne sa používa. Predstaví novinky v tejto oblasti ako napríklad aké sú iné typy modelov, ktoré sú založené na špirálovom modeli alebo aké kombinácie špirálového modelu a iných modelov sa dnes využívajú na optimalizáciu vývoja softvéru.
-.
+Špirálový model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu rizík. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich špirálový model rieši. Analyzuje postup vývoja pomocou špirálový modelu, porovná jeho výhody a nevýhody. Vysvetlí, prečo je analýza a riešenie rizík dôležité a ako ich tento model rieši. Ukáže ako veľa sa dnes využíva a predstaví konkrétny príklad využitia.
 
-.
-
-.
-
-.
-
-.
-
-.
-
-doplnit klucove slova
+\paragraph{Kľúčové slová}: špirálový model, SDLC, vývoj softvéru, softvérové modelovanie, riešenie rizík
 \end{abstract}
 
 \section{Úvod}
@@ -54,7 +43,7 @@ Vývoj softvéru je zložitý proces. Tvorba nápadu, určenie požiadaviek, diz
 
 Existuje množstvo vývojových modelov, niektoré sú vhodnejšie na menšie projekty, pričom sú nepoužiteľné vo veľkých, kde by vývoj postupoval neefektívnym spôsobom. Iné sú zasa vhodnejšie na veľké projekty, ale pri malých projektoch by bolo ich použitie zbytočne komplikované. Tento článok ukáže vývoj skôr veľkých projektov a prečo je na to výbornou voľbou práve špirálový model.
 
-V časti \ref{vyvojSoftveru} sa pozrieme na životný cyklus vývoja softvéru a aké fázy obnáša. V časti \ref{metody:vyvojSoftveru} bude predstavených niekoľko tradičných vývojových modelov a budú ukázané ich nevýhody a ako ich špirálový model rieši. V ďalšej časti (\ref{spiralModel}) prejdeme na samotný špirálový model. Ukážeme si ako funguje, ako prebieha riešenie objavených rizík v časti \ref{risks:spiralModel}, ako vznikal v časti \ref{history:spiralModel} a kde sa využíva v časti \ref{usage:spiralModel}. V časti \ref{problems:spiralModel} sú zhodnotené problémy špirálového modelu. Na záver sa ešte vyjadrím k témam z prednášok (\ref{reakciaNaTemy}) a v časti \ref{zaver} budú zhrnuté získané poznatky.
+V časti \ref{vyvojSoftveru} sa pozrieme na životný cyklus vývoja softvéru a aké fázy obnáša. V časti \ref{metody:vyvojSoftveru} bude predstavených niekoľko tradičných vývojových modelov a budú ukázané ich nevýhody a ako ich špirálový model rieši. V ďalšej časti (\ref{spiralModel}) prejdeme na samotný špirálový model. Ukážeme si ako funguje, aké sú jeho výhody/nevýhody v časti \ref{prosCons:spiralModel}, ako prebieha riešenie objavených rizík v časti \ref{risks:spiralModel}, kde a ako veľa sa využíva v časti \ref{usage:spiralModel}. Na záver sa ešte vyjadrím k témam z prednášok (\ref{reakciaNaTemy}) a v časti \ref{zaver} budú zhrnuté získané poznatky.
 
 \section{Vývoj softvéru} \label{vyvojSoftveru}
 
@@ -104,7 +93,7 @@ Jeho diagram vyzerá ako špirála s mnohými sľučkami (viď. obrázok \ref{sp
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{spiralModel.png}
-\caption{Diagram špirálového modelu \cite{Boehm}} 
+\caption{Diagram špirálového modelu - upravené podľa \cite{Boehm}} 
 \label{spiralDiagram}
 \end{figure} 
 
@@ -117,30 +106,84 @@ Každá fáza je rozdelená do štyroch kvadrantov, ako je znázornené na obrá
 \item \textbf{Vývoj a testovanie produktu ďalšej verzie} - V treťom kvadrante prebieha všetka implementácia a testovanie. Určené špecifikácie sú vytvárané a testované. Na konci tohto kvadrantu je pripravená ďalšia verzia produktu.
 \item \textbf{Plánovanie ďalšej fázy} - Klient zhodnotí vytvorený produkt a prebieha plánovanie ďalšej fázy.
 \end{enumerate}
-Na doplnenie.
+
+\subsection{Výhody a nevýhody špirálového modelu} \label{prosCons:spiralModel}
+
+Ako je zjavné z popisu vyššie, tento model je vhodný najmä pre rozsiahle, komplexné projekty. Progresívna povaha tohto modelu umožňuje vývojárom rozdeliť veľký projekt na menšie časti a venovať sa plne jednej funkcii, čo zaručuje lepšie prepracovanie, menší počet chýb atď. \cite{SpiralModelDef2} 
+
+Medzi ďaľšie \textbf{výhody} špirálového modelu patrí \cite{SpiralModelProsCons} :
+\begin{itemize}
+\item Prvé verzie softvéru sú dostupné už na začiatku vývoja.
+\item Riešenie rizík - je jednou z najdôležitejších predností špirálového modelu. Vďaka analýze a riešeniu rizík v každej fáze tento model minimalizuje riziko neúspechu rozsiahlych projektov.
+\item Flexibilný vzhľadom na nové požiadavky - pri vývoji týmto modelom, môžeme kedykoľvek v neskorších fázach vývoja zmeniť požiadavky na vyvíjaný softvér a ľahko a správne ich zapracovať do softvéru. Rovnako môže byť kedykoľvek pridaná aj ďalšia funkcionalita.
+\item Vývoj týmto modelom je otvorený spolupráci so zákazníkmi/užívateľmi. Zákazníkov môžeme, najmä vďaka tvorbe skorých a pravidelných prototypov, zapájať už od začiatku vývoja. Toto redukuje množstvo nedorozumení a tým šetrí čas a náklady na prerábanie nevhodnej funkcionality.
+\item Kontrola postupu práce a tvorba dokumentácie je na vysokej úrovni.
+\item Je vhodný pre vysoko rizikové projekty. Pomocou tohto modelu je možné vytvoriť veľmi prispôsobený produkt.
+\end{itemize}
+
+\bigskip
+
+Medzi  \textbf{nevýhody} špirálového modelu patrí \cite{SpiralModelProsCons} :
+\begin{itemize}
+\item Nie je vhodný na malé projekty. Vývoj by bol moc nákladný a nedokázali by využiť jeho plný potenciál.
+\item Vysoká komplexita - je komplexnejší ako väčšina ostatných vývojových modelov.
+\item Dôraz na analýzu a riešenie rizík vytvára potrebu neštandardnej špecifickej expertízy.
+\item Neurčité časové estimácie. Kedže počet fáz býva na začiatku vývoja neznámy, nie je jednoduché určiť časovú dĺžku vývoja softvéru, preto sa využíva skôr na dlhodobý vývoj.
+\item Špirála sa môže pokračovať do nekonečna.
+\item Nie je vhodný na nízko rizikové projekty. Pre takéto projekty nie je dôvod tento model využívať.
+\item Definícia jasných, overiteľných miľníkov môže byť zložitá. Častá zmena funkcionality si vyžaduje nadmernú dokumentáciu.
+\end{itemize}
 
 \subsection{Riešenie rizík pomocou špirálového modelu} \label{risks:spiralModel}
+Riziko je akákoľvek nepriaznivá situácia, ktorá môže ovplyvniť úspešné dokončenie softvérového projektu. Najdôležitejšou vlastnosťou špirálového modelu je analýza a riešenie týchto rizík. Takéto riešenia rizík sa dajú ľahšie vykonať vývojom prototypu. Špirálový model má na tento proces vyhradený jeden kvadrant v každej fáze vývoja.
 
-Na doplnenie.
+Aj "prototypovací model" podporuje analýzu a riešenie rizík, ale všetky riziká musia byť identifikované už pred začatím vývoja. Avšak často sa riziká naskytávajú aj počas vývoja, takže v tomto je špirálový model flexibilnejší a celkovo vhodnejší. \cite{SpiralModelDef}
 
-\subsection{Vznik špirálového modelu} \label{history:spiralModel}
-Pred prvou definíciou Barrym Boehmom v roku 1986 sa špirálový model vyvíjal niekoľko rokov. Prvé implementácie vznikali na základe rôznych úprav Waterfall modelu aplikovaného na veľké vládne projekty. \cite{Boehm}
-
-Na doplnenie.
 
 \subsection{Využitie špirálového modelu} \label{usage:spiralModel}
+Dáta o popularite špirálového modelu sú ťažko dohľadateľné, takže v tejto téme som sa odrazil iba od jednej štúdie spoločnosti GoodFirms, preto môžu byť výsledky nepresné. 
 
-Gantt-Pro a tabulka využitia.
+V tejto štúdii GoodFirms skúmali 150 firiem, ktoré vyvíjajú softvér. Jedným z faktorov, ktorý skúmali je aké vývojové modeli tieto firmy využívali. Výsledky tohto prieskumu sú uvedené v tabuľke \ref{usageTab}
 
-Na doplnenie.
+\begin{table}[!ht]
+	\caption{Využitie vývojových modelov firmami \cite{SpiralModelUsage}}
+	\label{usageTab}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline   
+    \hline
+        Model           & Počet firiem & Podiel \\ \hline
+    \hline
+        Agile           & 92           & 61\%       \\ \hline
+        Scrum           & 35           & 23\%      \\ \hline
+        Waterfall       & 14           & 9\%      \\ \hline
+        Špirálový a iné & 9            & 6\%      \\ \hline
+    \hline
+        Spolu           & 150            & 100\%     \\ \hline
+    \end{tabular}
+\end{table}
 
-\subsection{Problémy špirálového modelu a ich riešenia} \label{problems:spiralModel}
+Ako je možné vidieť v tabuľke, táto štúdia naznačuje minimálne využitie špirálového modelu. Jedným z dôvodov môže byť nevhodná vzorka skúmaných firiem - v štúdii sa vyskytovali najmä menšie firmy, ktoré sa len zriedka púštajú do vývoja rozsiahlych projektov. Preto sa teraz pozrieme na konkrétny príklad využitia špirálového modelu.
 
-Na doplnenie.
+\paragraph{GanttPRO} - Aplikácia, ktorá poskytuje nástroje na projektový manažment, podobná aplikáciám ako Notion alebo MS Project.
+
+Vývojári využívali pri vývoji špirálové a scrum princípy. Napríklad kratšie iterácie, čo im dovolilo častejšie produkovať prototypy a tým získali častejšiu spätnú väzbu. Pre každú iteráciu (fázu) vytvorili detailný plán práce.
+
+Hlavnými problémami, ktorým vývojári čelili, boli:
+\begin{itemize}
+\item Rôzne nové požiadavky, ktoré sa časom naskytovali. Z iterácie do iterácie ich bolo potrebné objasniť a zakomponovať.
+\item Potreba analýzy a riešenia rizík, ktoré sa vývojom naskytovali.
+\item Možné zvýšené náklady spôsobené dlhým plánovaním.
+\end{itemize}
+Zvolili teda kratšiu frekvenciu vývoja prototypov - dvojtýždňové iterácie. V dôsledku toho sa im podarilo zredukovať množstvo rizík a maximalizovať zisky vďaka rýchlemu prispôsobeniu sa potrebám používateľov a trhu. \cite{SpiralModelExample}
 
 \subsection{Reakcia na témy z prednášok} \label{reakciaNaTemy}
-
-Na doplnenie.
+V tejto časti zareagujem na niekoľko tém, ktoré boli obsahom prednášok na predmete MIP.
+\paragraph{Spoločenské súvislosti} - 
+\paragraph{Historické súvislosti} - 
+\paragraph{Technológia a ľudia} - 
+ \paragraph{Grafické vyjadrenie informácií v informatike} - 
+ \paragraph{Načo budem inžinierom?} - 
 
 
 \section{Záver} \label{zaver} 
