@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-Špirálový model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu rizík. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich špirálový model rieši. Analyzuje postup vývoja pomocou špirálový modelu, porovná jeho výhody a nevýhody. Vysvetlí, prečo je analýza a riešenie rizík dôležité a ako ich tento model rieši. Ukáže ako veľa sa dnes využíva a predstaví konkrétny príklad využitia.
+Špirálový model je metóda na vývoj softvéru. Vývoj pomocou tohto modelu sa vyznačuje tým, že kladie dôraz na redukciu rizík. Článok predstaví vývoj softvéru, niektoré tradičné modely, ich problémy a ako ich špirálový model rieši. Analyzuje postup vývoja pomocou špirálového modelu, porovná jeho výhody a nevýhody. Vysvetlí, prečo je analýza a riešenie rizík dôležité a ako ich tento model rieši. Ukáže ako veľa sa dnes využíva a predstaví konkrétny príklad využitia.
 
 \paragraph{Kľúčové slová}: špirálový model, SDLC, vývoj softvéru, softvérové modelovanie, riešenie rizík
 \end{abstract}
@@ -53,7 +53,7 @@ Softvéroví inžinieri sa vždy snažia vyprodukovať kvalitný produkt, ktorý
 \begin{sloppypar}
 \begin{enumerate}
 \item \textbf{Iniciácia/Počiatočné plánovanie} - Diskusia o realizovateľnosti projektu, počiatočná estimácia nákladov a časovej náročnosti.
-\item \textbf{Analýza požiadaviek a špecifikácia} - Identifikácia problémov, ktoré má vyvíjaný softvér riešiť a ich špecifikácia. Riešenie jeho operačných schopností, výkonostných charakteristík a infraštruktúry potrebnej na jeho údržbu.
+\item \textbf{Analýza požiadaviek a špecifikácia} - Identifikácia problémov, ktoré má vyvíjaný softvér riešiť a ich špecifikácia. Riešenie jeho operačných schopností, výkonnostných charakteristík a infraštruktúry potrebnej na jeho údržbu.
 \item \textbf{Funkčná špecifikácia alebo prototypovanie} - Identifikácia objektov, ich vlastností a vzťahov. Identifikácia obmedzení, ktoré obmedzujú správanie systému aťd. 
 \item \textbf{Rozdelenie systémov (Build vs. Buy vs. Reuse)} - Rozdelenie systému na menšie časti a zistenie, ktoré časti je výhodné vyrobiť, ktoré stačí odkúpiť a nakonfigurovať k požiadavkám systému, a ktoré je možné opäť použiť z predošlých projektov.
 \item \textbf{Architektúra} - Definuje prepojenia a vytvára rozhrania medzi jednotlivými podsystémami, komponentami a modulmi aby bol možný ich jednotlivý detailný dizajn.
@@ -80,7 +80,7 @@ Existuje veľké množstvo modelov a každý z nich je vhodný v inej situácií
 \item \textbf{V-Shaped Model} - Je považovaný za rozšírenie Waterfall modelu. Namiesto lineárneho pohybu nadol sa vytvára tvar V s vrcholom, v ktorom je implementačný proces. Model vytvára vzťahy medzi vývojovými procesmi pred implementáciou a ich príslušnými fázami testovania. Výhodou tohto modelu jednoduché použitie rovnako ako pri Waterfall modeli a narozdiel od Waterfall modelu je tu vyššia šanca úspechu kvôli plánovaniu testovania už na začiatku vývoja. Nevýhodou je nízka úroveň flexibility a nemožnosť tvorby skorých prototypov pretože celková produkcia kódu je až vo fáze implementácie.
 \end{itemize}
 
-Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Pri vývoji veľkých projektov častov vznikajú rôzne riziká, ktoré sa pri tých menších objavujú menej. Preto veľké firmy hľadajú iné modely, pomocou ktorých tieto riziká vedia odhaliť a uskutočniť určité kroky na ich spracovanie.
+Ako je možné vidieť, nevýhodami týchto modelov sú hlavne nízka flexibilita a zlá analýza rizík. Pri vývoji veľkých projektov často vznikajú rôzne riziká, ktoré sa pri tých menších objavujú menej. Preto veľké firmy hľadajú iné modely, pomocou ktorých tieto riziká vedia odhaliť a uskutočniť určité kroky na ich spracovanie.
 
 V ďalšej časti sa pozrieme na špirálový model a ako dokáže tieto problémy riešiť.
 
@@ -129,7 +129,7 @@ Medzi  \textbf{nevýhody} špirálového modelu patrí \cite{SpiralModelProsCons
 \item Vysoká komplexita - je komplexnejší ako väčšina ostatných vývojových modelov.
 \item Dôraz na analýzu a riešenie rizík vytvára potrebu neštandardnej špecifickej expertízy.
 \item Neurčité časové estimácie. Kedže počet fáz býva na začiatku vývoja neznámy, nie je jednoduché určiť časovú dĺžku vývoja softvéru, preto sa využíva skôr na dlhodobý vývoj.
-\item Špirála sa môže pokračovať do nekonečna.
+\item Špirála môže pokračovať do nekonečna.
 \item Nie je vhodný na nízko rizikové projekty. Pre takéto projekty nie je dôvod tento model využívať.
 \item Definícia jasných, overiteľných miľníkov môže byť zložitá. Častá zmena funkcionality si vyžaduje nadmernú dokumentáciu.
 \end{itemize}
@@ -177,7 +177,7 @@ Hlavnými problémami, ktorým vývojári čelili, boli:
 \end{itemize}
 Zvolili teda kratšiu frekvenciu vývoja prototypov - dvojtýždňové iterácie. V dôsledku toho sa im podarilo zredukovať množstvo rizík a maximalizovať zisky vďaka rýchlemu prispôsobeniu sa potrebám používateľov a trhu. \cite{SpiralModelExample}
 
-\subsection{Reakcia na témy z prednášok} \label{reakciaNaTemy}
+\section{Reakcia na témy z prednášok} \label{reakciaNaTemy}
 V tejto časti zareagujem na niekoľko tém, ktoré boli obsahom prednášok na predmete MIP.
 
  \paragraph{Inžinierska gramotnosť} - V tejto prednáške sme sa dozvedeli kto je vlastne inžinier. Inžinier pracuje najmä s technickými informáciami - mal by vedieť pochopiť, interpretovať, aplikovať a ďalej odovzdať informáciu. Spomedzi viacerých zdrojov na rovnakú tému, by mal vedieť zhodnotiť čím a prečo sa odlišujú.
